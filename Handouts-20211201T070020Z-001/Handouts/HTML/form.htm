@@ -1,0 +1,60 @@
+<html>
+<head>
+<script>
+function validate(){
+var name=f.n.value;
+var ph=f.ph.value;
+var em=f.e.value;
+if(!(name>="a"&&name<="z")&& !(name>="A"&& name<="Z")){
+alert("Enter Alphabets");
+}
+if(!(ph>="0" && ph<="9")){
+alert("Enter numbers");
+}
+s=f.s.value;
+alert(s);
+var ui='';
+for(i=0;i<f.r.length;i++) {
+if(f.r[i].checked){
+ui=f.r[i].value;
+alert(ui);
+}
+}
+}
+</script>
+</head>
+<body>
+<fieldset>
+<legend>Form heading</legend>
+<form name="f" onsubmit="validate()">
+Name <input type="text" name="n">
+<br> Phone <input name="ph">
+<br>Email <input type="text" name="e">
+<br>
+Which Language you like?
+<br>
+<input type="checkbox" name="c" value="p">Punjabi
+<input type="checkbox" name="c" value="u">Urdu
+<input type="checkbox" name="c" value="e">English
+<input type="checkbox" name="c" value="o">other
+<br>
+Which color do you like?
+<br><input type="radio" name="r" value="y">Yes
+<input type="radio" name="r" value="n">No
+<br>
+<textarea name="t" rows="5" cols="45" value="">
+</textarea>
+<br>Which country do you like?
+<br><select name="s">
+<option value="pa">Pakistan
+<option value="ca">Canada
+<option value="J">Japan
+<option value="o" selected>other
+</select>
+<br>
+<input type="reset" value="Clear">
+<input type="Submit" value="Send">
+</form>
+</fieldset>
+</body>
+</html>

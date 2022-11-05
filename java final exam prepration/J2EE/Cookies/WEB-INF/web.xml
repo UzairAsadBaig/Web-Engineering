@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<servlet>
+		<servlet-name>cexample</servlet-name>
+		<servlet-class>cexample</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>cexample</servlet-name>
+		<url-pattern>/cexample</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>viewCookie</servlet-name>
+		<servlet-class>viewCookie</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>viewCookie</servlet-name>
+		<url-pattern>/viewCookie</url-pattern>
+	</servlet-mapping>
+
+</web-app>

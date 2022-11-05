@@ -1,0 +1,212 @@
+<html>
+<head>
+<title>Employer's SignUp</title>
+
+<script language="JavaScript" type="text/javaScript">
+
+function validate()
+{	
+
+	if ( document.employer.uname.value == "" )
+	    {
+			alert("User name is empty!!");			
+			return false;
+	    }
+
+	if(document.employer.password.value == "")	
+	   {
+			alert("password is empty!!");
+			document.employer.password.focus();
+			return false;
+	   }	
+
+	if(document.employer.password.value!=document.employer.confirm_password.value)
+	{
+			alert("New Password and Confirm new Password doesnt match");
+			document.employer.confirm_password.focus();
+			return false;
+	}
+
+
+	if (!document.employer.gender[0].checked && !document.employer.gender[1].checked)
+	{
+		alert("Please choose gender");
+		return false;
+	}
+
+	
+	if ( document.employer.company_name.value == "" )
+	{		
+			alert("Company Name is empty!!");
+			return false;
+	}
+
+
+			
+	if ( document.employer.address1.value == "" )
+	{	
+			alert("Address is empty!!");
+			return false;
+	}
+
+			
+	if ( document.employer.city.value == "" )
+	{		alert("City is empty!!");
+			return false;
+	}
+
+
+	if ( document.employer.country.value == "" )
+	{		
+			alert("Choose Country!!");
+			return false;
+	}
+	
+
+	if ( document.employer.phone.value == "" )
+	{		
+			alert("Telephone is empty!!");
+			return false;
+	}
+			
+	if ( document.employer.email.value == "" )		
+        {
+		alert("Please enter email address!")
+		return false;
+	}	
+
+	return true;
+
+}
+
+
+function letternumber(event)
+	{
+		var keychar;
+			
+		keychar = event.key;
+		alert(event.key)	
+		
+		// alphas and numbers
+		if (((".+-0123456789").indexOf(keychar) > -1))
+		   return true;
+		else
+		   return false;
+	}
+
+	// key = event.keyCode;
+	// keychar = String.fromCharCode(key);
+	//String.fromCharCode used to convert the Unicode values to the characters
+	//document.write(String.fromCharCode(72,69,76,76,79))
+	//The indexOf() method returns the position of the first occurrence of a specified string value in a string.
+	
+
+
+</script>
+
+
+</head>
+
+<body>
+
+
+	<form name=employer method=post enctype="multipart/form-data" onsubmit="return validate()">
+	<table>
+	<tr><p><font color=blue size=3><b><u>Employers</u></b></font></p></tr>
+	  
+	   
+	  <tr>
+	      <td  align="right">Username:</td>
+	      <td ><input type=text name="uname"></td>
+      </tr>
+	  
+	  <tr>
+	    <td  align="right">Password:</td>
+	    <td ><input type=password name="password" ></td>
+	  </tr> 
+	  
+	   <tr> 
+	     <td  align="right">Confirm password:</td> 
+	     <td ><input type=password name="confirm_password"></td> 
+	   </tr> 
+	  
+	   <tr> 
+	     <td  align="right">Gender:</td> 
+	     <td ><input type="radio" name="gender" value="male"> Male </td> 
+	   </tr>
+
+	   <tr> 
+	     <td  align="right"></td> 
+	     <td ><input type="radio" name="gender" value="female"> Female </td> 
+	   </tr>
+	
+	  
+	   <tr> 
+	     <td  align="right">Company name:</td> 
+	     <td ><input type=text name=company_name ></td> 
+	   </tr> 
+	  
+	   <tr> 
+	     <td  align="right">Addresss:</td> 
+	     <td ><input type=text name=address1 ></td> 
+	     </td> 
+	   </tr> 
+	  
+	   <tr> 
+	     <td  align="right"></td> 
+	     <td ><input type=text name=address2 ></td> 
+	   </tr> 
+	  
+	    	  	  
+	   <tr> 
+	     <td  align="right">City:</td> 
+	     <td ><input type=text name=city ></td> 
+	   </tr> 
+
+	   <tr> 
+	     <td  align="right">Country:</td> 
+	     <td >
+		<select name="country">
+		<option value=""></option>		
+		<option value="Pakistan">Pakistan</option>
+		<option value="India">India</option>
+		</select>
+	      </td> 
+	   </tr> 
+	  
+	   <tr> 
+	     <td  align="right">Zip:</td> 
+	     <td ><input type=text name=zip ></td> 
+	   </tr>
+	   
+	   <tr> 
+	     <td  align="right">Telephone:</td> 
+	     <td ><input type=text name=phone  onKeyPress="return letternumber(event)"></td> 
+	   </tr> 
+	  
+	   <tr> 
+	     <td  align="right">Fax:</td> 
+	     <td ><input type=text name=fax ></td> 
+	   </tr> 
+	  
+	   <tr> 
+	     <td  align="right">Contact Person:</td> 
+	     <td ><input type=text name=contact_person ></td> 
+	   </tr> 
+	  
+	   <tr> 
+	     <td  align="right">Email:</td> 
+	     <td ><input typ=text name=email ></td> 
+	   </tr> 
+	   
+	   
+	   <tr> 
+	     <td ></td> 
+	     <td ><input type=submit value='Signup'></td> 
+	   </tr> 
+	  
+  	</table>
+    </form>
+</body>
+</html>
+	 

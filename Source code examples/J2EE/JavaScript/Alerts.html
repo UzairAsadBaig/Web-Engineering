@@ -1,0 +1,54 @@
+<html>
+<head>
+
+<script type="text/javascript">
+
+function display_alert()
+{
+alert("Hello Every Body!!")
+}
+
+
+function display_prompt()
+  {
+  var name=prompt("Your name","Ali")
+  if (name!=null && name!="")
+    {
+    document.write("Hello " + name + "! How are you today?")
+    }
+  }
+
+
+function display_confirm()
+  {
+  var r=confirm("Press a button")
+  if (r==true)
+    {
+    document.write("You pressed OK!")
+    }
+  else
+    {
+    document.write("You pressed Cancel!")
+    }
+  }
+
+function myfunction()
+{
+alert("HELLO")
+}
+
+</script>
+
+</head>
+<body>
+
+<input type="button" onclick="display_alert()" value="Display an alert box" /> <br/><br/>
+
+<input type="button" onclick="display_confirm()" value="Display a Confirm Box" /> <br/><br/>
+
+<input type="button" onclick="display_prompt()" value="Display a prompt box" /> <br/><br/>
+
+<input type="button" onclick="myfunction()" value="Call throug a function" />
+
+</body>
+</html>

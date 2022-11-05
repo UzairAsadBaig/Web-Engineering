@@ -1,0 +1,71 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+}
+.logo img {
+  height: 3rem;
+  padding-left: 0.5rem;
+  padding-right: 0.7rem;
+}
+.welcome {
+  font-size: 1.5rem;
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #222;
+}
+#username {
+  color: #175c8b;
+}
+.book_img {
+  height: 140px;
+}
+.book_img_search {
+  height: 150px;
+}
+.line {
+  width: 94%;
+  /* margin-left: 1.5rem; */
+  background-color: #175c8b;
+}
+
+.features {
+  margin-top: 9rem;
+  margin-bottom: 9rem;
+  text-align: center;
+}
+/* .container {
+  border: 1px solid black;
+  margin-top: 2rem;
+} */
+a:active,
+a:visited,a {
+  color: #175c8b;
+}
+
+.titley {
+  margin-top: 1.1rem;
+}
+
+.titlex {
+  margin-top: 0.5rem;
+}
+
+.title {
+  font-weight: 500;
+}
+.logout {
+  float: right!important;
+  font-size: 1rem;
+  margin-right: 5rem;
+  height: 2.3rem;
+  margin-top: 0.5rem;
+  background: red;
+  color: white;
+  border: white;
+  padding: 10px 16px;
+  border-radius: 1rem;
+ 
+ 
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+
+
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.75 [en] (Win98; U) [Netscape]">
+   <meta name="Description" content="JSP Tutorial">
+   <meta name="Keywords" content="JSP Tutorial">
+   <title>JSP Tutorial</title>
+</head><body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" cols="1">
+<tbody><tr>
+<td>
+<center>
+<font size="+3"><b>JSP Tutorial</b></font>
+<br>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-9711127422221709";
+/* 728x90, created 5/4/08 */
+google_ad_slot = "6491424234";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="Beans%20with%20session_files/show_ads.js">
+</script><script src="Beans%20with%20session_files/show_ads_impl.js"></script><script src="Beans%20with%20session_files/expansion_embed.js"></script><script src="Beans%20with%20session_files/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="display: inline-table; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><ins id="google_ads_frame1_anchor" style="display: block; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="Beans%20with%20session_files/ads.htm" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" width="728" frameborder="0" height="90" scrolling="no"></iframe></ins></ins>
+		</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<h2>
+Beans and Form processing</h2>
+Forms are a very common method of interactions in web sites.&nbsp; JSP
+makes forms processing specially easy.
+<p>The standard way of handling forms in JSP is to define a "bean".&nbsp;
+This is not a full Java bean.&nbsp; You just need to define a class that
+has a field corresponding to each field in the form.&nbsp; The class fields
+must have "setters" that match the names of the form fields.&nbsp; For
+instance, let us modify our <tt>GetName.html</tt> to also collect email
+address and age.
+</p><p>The new version of <tt>GetName.html</tt> is
+</p><pre><tt>&lt;HTML&gt;
+&lt;BODY&gt;
+&lt;FORM METHOD=POST ACTION="SaveName.jsp"&gt;
+What's your name? &lt;INPUT TYPE=TEXT NAME=username SIZE=20&gt;&lt;BR&gt;
+What's your e-mail address? &lt;INPUT TYPE=TEXT NAME=email SIZE=20&gt;&lt;BR&gt;
+What's your age? &lt;INPUT TYPE=TEXT NAME=age SIZE=4&gt;
+&lt;P&gt;&lt;INPUT TYPE=SUBMIT&gt;
+&lt;/FORM&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</tt></pre>
+To collect this data, we define a Java class with fields "<tt>username</tt>",
+"<tt>email</tt>" and "<tt>age</tt>" and we provide setter methods "<tt>setUsername</tt>",
+"<tt>setEmail</tt>" and "<tt>setAge</tt>", as shown.&nbsp; A "setter" method
+is just a method that starts with "<tt>set</tt>" followed by the name of
+the field.&nbsp; The first character of the field name is upper-cased.&nbsp;
+So if the field is "<tt>email</tt>", its "<tt>setter</tt>" method will
+be "<tt>setEmail</tt>".&nbsp; Getter methods are defined similarly, with
+"get" instead of "set".&nbsp;&nbsp; Note that the setters&nbsp; (and getters)
+must be public.
+<pre><tt>
+package user;
+
+public class UserData {</tt></pre>
+
+<pre><tt>&nbsp;&nbsp;&nbsp; String username;
+&nbsp;&nbsp;&nbsp; String email;
+&nbsp;&nbsp;&nbsp; int age;
+
+&nbsp;&nbsp;&nbsp; public void setUsername( String value )
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; username = value;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void setEmail( String value )
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; email = value;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public void setAge( int value )
+&nbsp;&nbsp;&nbsp; {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; age = value;
+&nbsp;&nbsp;&nbsp; }
+
+&nbsp;&nbsp;&nbsp; public String getUsername() { return username; }
+
+&nbsp;&nbsp;&nbsp; public String getEmail() { return email; }
+
+&nbsp;&nbsp;&nbsp; public int getAge() { return age; }</tt></pre>
+
+<pre><tt>}</tt></pre>
+The method names must be exactly as shown.&nbsp; Once you have defined
+the class, compile it and make sure it is available in the web-server's
+classpath.&nbsp; The server may also define special folders where you can
+place bean classes, e.g. with Blazix you can place them in the "<tt>classes</tt>"
+folder.&nbsp; If you have to change the classpath, the web-server would
+need to be stopped and restarted if it is already running.&nbsp; (If you
+are not familiar with setting/changing classpath, see <a href="http://www.jsptut.com/Classpath.html">notes
+on changing classpath</a>.)
+<p>Note that we are using the package name <tt>user</tt>, therefore
+the file <tt>UserData.class</tt> must be placed in a folder named
+<tt>user</tt> under the classpath entry.
+</p><p>Now let us change "<tt>SaveName.jsp</tt>" to use a bean to collect the
+data.
+</p><pre>&lt;jsp:useBean id="user" class="user.UserData" scope="session"/&gt;
+&lt;jsp:setProperty name="user" property="*"/&gt;&nbsp;
+&lt;HTML&gt;
+&lt;BODY&gt;
+&lt;A HREF="NextPage.jsp"&gt;Continue&lt;/A&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+All we need to do now is to add the <tt>jsp:useBean</tt> tag and the <tt>jsp:setProperty</tt>
+tag!&nbsp; The useBean tag will look for an instance of the "<tt>user.UserData</tt>"
+in the session.&nbsp; If the instance is already there, it will update
+the old instance.&nbsp; Otherwise, it will create a new instance of <tt>user.UserData</tt>
+(the instance of the <tt>user.UserData</tt> is called a bean), and put it in
+the session.
+<p>The setProperty tag will automatically collect the input data, match
+names against the bean method names, and place the data in the bean!&nbsp;
+</p><p>Let us modify <tt>NextPage.jsp</tt> to retrieve the data from bean..
+</p><pre>&lt;jsp:useBean id="user" class="user.UserData" scope="session"/&gt;&nbsp;
+&lt;HTML&gt;
+&lt;BODY&gt;
+You entered&lt;BR&gt;
+Name: &lt;%= user.getUsername() %&gt;&lt;BR&gt;
+Email: &lt;%= user.getEmail() %&gt;&lt;BR&gt;
+Age: &lt;%= user.getAge() %&gt;&lt;BR&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;</pre>
+Notice that the same useBean tag is repeated.&nbsp; The bean is available
+as the variable named "<tt>user</tt>" of class "<tt>user.UserData</tt>".&nbsp;
+The data entered by the user is all collected in the bean.
+<p>We do not actually need the "<tt>SaveName.jsp</tt>", the target of <tt>GetName.html</tt>
+could have been <tt>NextPage.jsp</tt>, and the data would still be available
+the same way as long as we added a <tt>jsp:setProperty</tt> tag.&nbsp;
+But in the next tutorial, we will actually use <tt>SaveName.jsp</tt> as
+an error handler that automatically forwards the request to <tt>NextPage.jsp</tt>,
+or asks the user to correct the erroneous data.
+</p><p><i>Exercise:</i>&nbsp; 1)&nbsp; Write a JSP/HTML set that allows a user
+to enter the name of a system property, and then displays the value returned
+by <tt>System.getProperty</tt> for that property name (handle errors appripriately.)&nbsp;&nbsp;
+2)&nbsp; Go back to the exercises where you manually modified boolean variables.&nbsp;
+Instead of a boolean variable, make these come from a HIDDEN form field
+that can be set to true or false.
+<br>&nbsp;
+</p><center><!-- jsp:include page="/header.jsp"/ --></center>
+<br>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td><a href="http://www.jsptut.com/Taglibs.jsp">Next tutorial: Tag Libraries</a></td>
+
+<td>
+<div align="right"><font size="-1"><a href="http://www.jsptut.com/Index.html#contents">Contents</a></font></div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+
+<tr>
+<td></td>
+</tr>
+</tbody></table>
+</body></html>

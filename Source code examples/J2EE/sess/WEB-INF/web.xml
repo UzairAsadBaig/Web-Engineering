@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<servlet>
+		<servlet-name>MySession</servlet-name>
+		<servlet-class>MySession</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SessionExample</servlet-name>
+		<servlet-class>SessionExample</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ShoppingCartViewerSession</servlet-name>
+		<servlet-class>ShoppingCartViewerSession</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>SessionEx</servlet-name>
+		<servlet-class>SessionEx</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>SessionEx1</servlet-name>
+		<servlet-class>SessionEx1</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>MySession</servlet-name>
+		<url-pattern>/MySession</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SessionExample</servlet-name>
+		<url-pattern>/SessionExample</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ShoppingCartViewerSession</servlet-name>
+		<url-pattern>/ShoppingCartViewerSession</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SessionEx</servlet-name>
+		<url-pattern>/SessionEx</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>SessionEx1</servlet-name>
+		<url-pattern>/SessionEx1</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
